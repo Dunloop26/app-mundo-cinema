@@ -2,9 +2,9 @@
   <app-page-description-header title="Añade un combo" subtitle="Completa tu tarde de sensaciones increibles">
   </app-page-description-header>
   <div class="ticket-container">
-    <app-ticket-view *ngFor="let combo of combos; index as i" [title]="combo.name"
-      [subtitle]="combo.value.toString()" (click)="onComboClick(i)" [select]="selectedComboIdx == i">
-    </app-ticket-view>
+    <app-combo-view *ngFor="let combo of combos" [title]="combo.name"
+      [subtitle]="combo.value.toString()">
+    </app-combo-view>
   </div>
   <section class="bottom-section">
     <section class="alert-section">

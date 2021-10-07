@@ -1,0 +1,53 @@
+@import "src/styles.scss";
+
+.ticket-view-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 19.6875rem;
+  height: 22.625rem;
+  position: relative;
+  box-sizing: border-box;
+
+  .image-container {
+    flex: 1;
+  }
+  .title {
+    font-size: 1.5rem;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+  }
+
+  .subtitle {
+    margin: 0;
+    font-size: 1.125rem;
+  }
+
+  .bottom-section {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    gap: 1rem;
+
+    .number-input {
+      background-color: lighten($accent-color-4, 10%);
+      border-radius: $modal-radius;
+      width: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border: none;
+
+      &:focus,
+      &:active,
+      &:hover,
+      &:after {
+        border: none;
+      }
+    }
+  }
+}

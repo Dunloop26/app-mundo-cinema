@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Combo } from 'src/app/interfaces/combo';
+import { ComboInfo } from 'src/app/interfaces/combo-info';
+import { OrderStorageService } from 'src/app/services/order-storage.service';
 
 @Component({
   selector: 'app-combos',
@@ -8,14 +10,14 @@ import { Combo } from 'src/app/interfaces/combo';
   styleUrls: ['./combos.component.scss'],
 })
 export class CombosComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private order: OrderStorageService) {}
 
   ngOnInit(): void {}
 
   combos: Array<Combo> = [
-    { name: 'Diurno', value: 45000 },
-    { name: 'Tarde', value: 50000 },
-    { name: 'Nocturno', value: 35000 },
+    { id: "CC-01", name: 'Combo alitas', value: 12500 },
+    { id: "CC-02", name: 'Combo papas con gaseosa', value: 13450 },
+    { id: "CC-03", name: 'Combo hamburguesa', value: 18500 },
   ];
 
   selectedComboIdx = -1;
@@ -25,13 +27,6 @@ export class CombosComponent implements OnInit {
   count: number = 1;
 
   canContinue = false;
-
-  onComboClick(idx: number) {
-    this.selectedComboIdx = idx;
-    const comboValue = this.combos[this.selectedComboIdx].value;
-    this.updateCount(this.count, comboValue);
-    this.evaluateContinue();
-  }
 
   updateCount(count: number, value: number) {
     this.subtotal = count * value;
@@ -55,6 +50,11 @@ export class CombosComponent implements OnInit {
   }
 
   onContinue(): void {
+    this.order.saveCombosInfo(this.getSelectedCombos());
     this.router.navigateByUrl('combos');
+  }
+
+  private getSelectedCombos() : Array<ComboInfo> {
+    return []
   }
 }

@@ -5,13 +5,15 @@ import { RouterModule } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
 import { PageDescriptionHeaderComponent } from './page-description-header/page-description-header.component';
 import { TicketViewComponent } from './ticket-view/ticket-view.component';
+import { ComboViewComponent } from './combo-view/combo-view.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
     PageDescriptionHeaderComponent,
-    TicketViewComponent
+    TicketViewComponent,
+    ComboViewComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { TicketViewComponent } from './ticket-view/ticket-view.component';
     HeaderComponent,
     FooterComponent,
     PageDescriptionHeaderComponent,
-    TicketViewComponent
+    TicketViewComponent,
+    ComboViewComponent
   ]
 })
 export class SharedModule { }

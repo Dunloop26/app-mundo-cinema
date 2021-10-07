@@ -13,7 +13,7 @@ export class TicketViewComponent implements OnInit {
   }
 
   @Input() title?: string = 'Title';
-  @Input() subtitle?: string = 'Subtitle';
+  @Input() subtitle: string = 'Subtitle';
   @Input() select: boolean = false;
 
 }
