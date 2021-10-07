@@ -1,16 +1,28 @@
 <main class="container">
-  <app-page-description-header
-    title="Selecciona tu entrada"
-    subtitle="Encuentra más en MundoCinema"
-  >
+  <app-page-description-header title="Selecciona tu entrada" subtitle="Encuentra más en MundoCinema">
   </app-page-description-header>
   <div class="ticket-container">
-    <app-ticket-view
-      *ngFor="let ticket of tickets; index as i"
-      [title]="ticket.title"
-      [subtitle]="ticket.value.toString()"
-      (click)="onTicketClick(i)"
-      [select]="selectedTicketIdx == i"
-    ></app-ticket-view>
+    <app-ticket-view *ngFor="let ticket of tickets; index as i" [title]="ticket.title"
+      [subtitle]="ticket.value.toString()" (click)="onTicketClick(i)" [select]="selectedTicketIdx == i">
+    </app-ticket-view>
   </div>
+  <section class="bottom-section">
+    <section class="count-section">
+      <div class="label-group">
+        <h1 class="title">¿Cuántas entradas desea comprar?</h1>
+        <h4 class="subtitle">¡Tranquilo! no se acaban</h4>
+      </div>
+      <input #countInput type="number" class="number-input" min="1" step="1" [defaultValue]="1" (change)="onInputChange(countInput)">
+    </section>
+    <section class="subtotal-section">
+      <h4 class="label">
+        Subtotal
+      </h4>
+      <input class="number-input" type="number" disabled name="" id="" [value]="subtotal">
+    </section>
+  </section>
+  <div class="button-container">
+    <button class="btn" [ngClass]="{'disabled':!canContinue}" (click)="onContinue()">Siguiente</button>
+  </div>
+  <div class="section"></div>
 </main>

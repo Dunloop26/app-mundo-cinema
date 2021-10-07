@@ -9,6 +9,7 @@ $main-color: #242D80;
 $accent-color-1: #646CB0;
 $accent-color-2: #ABABAB;
 $accent-color-3: #72D045;
+$accent-color-4: #D2D2D2;
 $button-radius: 0.3125rem;
 $modal-radius: 0.9375rem;
 $modal-padding: 2.1875rem;
@@ -84,4 +85,26 @@ app-root {
 .no-vmargin {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.label-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+
+  .title, .subtitle {
+    font-family: $secondary-font;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  .subtitle {
+    font-size: 1.125rem;
+    margin: 0;
+    color: $accent-color-2;
+  }
 }
