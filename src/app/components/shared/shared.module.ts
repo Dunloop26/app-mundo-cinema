@@ -4,12 +4,14 @@ import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
 import { PageDescriptionHeaderComponent } from './page-description-header/page-description-header.component';
+import { TicketViewComponent } from './ticket-view/ticket-view.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    PageDescriptionHeaderComponent
+    PageDescriptionHeaderComponent,
+    TicketViewComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { PageDescriptionHeaderComponent } from './page-description-header/page-d
   exports: [
     HeaderComponent,
     FooterComponent,
-    PageDescriptionHeaderComponent
+    PageDescriptionHeaderComponent,
+    TicketViewComponent
   ]
 })
 export class SharedModule { }
