@@ -32,10 +32,10 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/materialize-css/sass/materialize.scss"
+              "./node_modules/materialize-css/sass/materialize.scss"
             ],
             "scripts": [
-              "node_modules/materailize-css/dist/js/materialize.js"
+              "./node_modules/materialize-css/dist/js/materialize.js"
             ]
           },
           "configurations": {

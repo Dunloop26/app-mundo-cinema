@@ -1,3 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import '~ngx-smart-modal/ngx-smart-modal'
+@import '~ngx-smart-modal/ngx-smart-modal';
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Ubuntu&display=swap');
+
+$main-font: 'Poppins', sans-serif;
+$secondary-font: 'Ubuntu', sans-serif;
+$main-color: #242D80;
+
+.main-font {
+  font-family: $main-font;
+}
+
+.secondary-font {
+  font-family: $secondary-font;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: $main-font;
+}
+
+p, a, div {
+  font-family: $secondary-font;
+}
+
+.main-color-bg {
+  background-color: $main-color;
+}
