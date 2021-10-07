@@ -1,0 +1,13 @@
+.app-footer {
+
+  display: flex;
+  height: 7.5rem;
+  justify-content: right;
+  align-items: center;
+
+  a {
+    margin-right: 3rem;
+    text-decoration: none;
+    font-size: 1.125rem;
+  }
+}
