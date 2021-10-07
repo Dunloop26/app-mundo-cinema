@@ -1,0 +1,7 @@
+.main-section {
+  flex: 1 0;
+  &>* {
+    height: 100%;
+  }
+}
+
