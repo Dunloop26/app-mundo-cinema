@@ -6,6 +6,8 @@
 $main-font: 'Poppins', sans-serif;
 $secondary-font: 'Ubuntu', sans-serif;
 $main-color: #242D80;
+$accent-color-1: #646CB0;
+$button-radius: 0.3125rem;
 
 .main-font {
   font-family: $main-font;
@@ -27,8 +29,30 @@ p, a, div {
   background-color: $main-color;
 }
 
+.accent-color-1-bg {
+  background-color: $accent-color-1;
+}
+
 app-root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+
+  .btn {
+    border-radius: $button-radius;
+    background-color: $accent-color-1;
+    box-shadow: none;
+
+    &:hover {
+      background-color: lighten($accent-color-1, 10%);
+    }
+
+    &:active {
+      background-color: darken($accent-color-1, 15%);
+    }
+
+    &:focus {
+      background-color: darken($accent-color-1, 5%);
+    }
+  }
 }
