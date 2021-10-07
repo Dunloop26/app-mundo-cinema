@@ -13,6 +13,13 @@ const routes: Routes = [
       import('./components/public/home/home.module').then((m) => m.HomeModule),
   },
   {
+    path: 'tickets',
+    loadChildren: () =>
+      import('./components/public/tickets/tickets.module').then(
+        (m) => m.TicketsModule
+      ),
+  },
+  {
     path: '**',
     loadChildren: () =>
       import('./components/public/page-not-found/page-not-found.module').then(
