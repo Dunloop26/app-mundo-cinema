@@ -1,27 +1,27 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { catchError, filter, tap } from 'rxjs/operators';
-import { Ticket } from '../interfaces/ticket';
+import { tap, filter, catchError } from 'rxjs/operators';
+import { Product } from 'src/app/interfaces/product';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TicketsService {
+export class ProductsService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Ticket|any> {
-    return this.http.get<Ticket|any>('/tickets').pipe(
+  getAll(): Observable<Product|any> {
+    return this.http.get("/products").pipe(
       filter(res => res && !!res),
-      tap((res) => {
-        console.log(res);
-      }),
+      tap(
+        (res) => {
+          console.log(res);
+        }
+      ),
       catchError((err: HttpErrorResponse) => {
         throw err;
       })
     )
   }
-
-
 }
