@@ -8,6 +8,9 @@ $secondary-font: 'Ubuntu', sans-serif;
 $main-color: #242D80;
 $accent-color-1: #646CB0;
 $button-radius: 0.3125rem;
+$modal-radius: 0.9375rem;
+$modal-padding: 2.1875rem;
+$shadow-profile: 0 2px 8px rgba(0,0,0,0.25);
 
 .main-font {
   font-family: $main-font;
@@ -33,6 +36,13 @@ p, a, div {
   background-color: $accent-color-1;
 }
 
+.modal-style {
+  background-color: white;
+  border-radius: $modal-radius;
+  padding: $modal-padding;
+  box-shadow: $shadow-profile;
+}
+
 app-root {
   display: flex;
   flex-direction: column;
@@ -55,4 +65,17 @@ app-root {
       background-color: darken($accent-color-1, 5%);
     }
   }
+}
+
+.top-margin-only {
+  margin-bottom: 0;
+}
+
+.bottom-margin-only {
+  margin-top: 0;
+}
+
+.no-vmargin {
+  margin-top: 0;
+  margin-bottom: 0;
 }
