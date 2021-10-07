@@ -1,4 +1,16 @@
 <main class="container">
-  <app-page-description-header title="Selecciona tu entrada" subtitle="Encuentra más en MundoCinema"></app-page-description-header>
-  <p>tickets works!</p>
+  <app-page-description-header
+    title="Selecciona tu entrada"
+    subtitle="Encuentra más en MundoCinema"
+  >
+  </app-page-description-header>
+  <div class="ticket-container">
+    <app-ticket-view
+      *ngFor="let ticket of tickets; index as i"
+      [title]="ticket.title"
+      [subtitle]="ticket.value.toString()"
+      (click)="onTicketClick(i)"
+      [select]="selectedTicketIdx == i"
+    ></app-ticket-view>
+  </div>
 </main>
