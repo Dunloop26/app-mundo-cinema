@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewRef } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { OrderStorageService } from 'src/app/services/order-storage.service'
 import { Ticket } from 'src/app/interfaces/ticket';
 
 @Component({
@@ -9,7 +11,7 @@ import { Ticket } from 'src/app/interfaces/ticket';
 })
 export class TicketsComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private order: OrderStorageService) { }
 
   ngOnInit(): void {
   }
@@ -57,6 +59,7 @@ export class TicketsComponent implements OnInit {
   }
 
   onContinue(): void {
+    this.order.saveTicketInfo(this.tickets[this.selectedTicketIdx]);
     this.router.navigateByUrl('combos');
   }
 
