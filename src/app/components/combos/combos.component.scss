@@ -1,0 +1,87 @@
+@import 'src/styles.scss';
+
+.ticket-container {
+  padding: 4rem 2rem;
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  overflow-x: auto;
+  margin-bottom: 3rem;
+
+}
+.bottom-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  gap: 3rem;
+
+  input {
+    margin: 0;
+  }
+}
+.count-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+
+  .label-group {
+    margin: 0;
+  }
+
+  .number-input {
+    background-color: lighten($accent-color-4, 10%);
+    border-radius: $modal-radius;
+    width: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: none;
+
+    &:focus, &:active, &:hover, &:after {
+      border: none;
+    }
+  }
+}
+
+.subtotal-section, .subtotal-combo-section {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+
+  .label {
+    font-size: 1.5rem;
+    font-family: $secondary-font;
+    margin: 0;;
+  }
+
+  .number-input {
+    background-color: lighten($accent-color-4, 10%);
+    border-radius: $modal-radius;
+    width: 9rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: none;
+
+    &:focus, &:active, &:hover, &:after {
+      border: none;
+    }
+  }
+}
+
+.button-container {
+  display: flex;
+  justify-content: right;
+}
+
+.subtotal-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

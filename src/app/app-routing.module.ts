@@ -19,6 +19,7 @@ const routes: Routes = [
         (m) => m.TicketsModule
       ),
   },
+  { path: 'combos', loadChildren: () => import('./components/combos/combos.module').then(m => m.CombosModule) },
   {
     path: '**',
     loadChildren: () =>
