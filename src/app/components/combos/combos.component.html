@@ -2,7 +2,7 @@
   <app-page-description-header title="Añade un combo" subtitle="Completa tu tarde de sensaciones increibles">
   </app-page-description-header>
   <div class="ticket-container">
-    <app-combo-view *ngFor="let combo of combos" [title]="combo.name"
+    <app-combo-view *ngFor="let combo of combos" [id]="combo.id" [title]="combo.name"
       [subtitle]="transformToCurrency(combo.value.toString())" [disableIncrement]="count >= ticketCount" (countChange)="comboViewCountChange($event)">
     </app-combo-view>
   </div>
@@ -26,7 +26,7 @@
     </div>
   </section>
   <div class="button-container">
-    <button class="btn" [ngClass]="{'disabled':!canContinue}" (click)="onContinue()">Siguiente</button>
+    <button class="btn" (click)="onContinue()">Siguiente</button>
   </div>
   <div class="section"></div>
 </main>

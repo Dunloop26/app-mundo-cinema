@@ -11,6 +11,7 @@ export class ComboViewComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  @Input() id?: string = '';
   @Input() title?: string = 'Title';
   @Input() subtitle?: string = 'Subtitle';
   @Input() countDisabled: boolean = false;
