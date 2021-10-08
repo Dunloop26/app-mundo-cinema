@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 
 import { CombosRoutingModule } from './combos-routing.module';
 import { CombosComponent } from './combos.component';
@@ -16,6 +16,9 @@ import { SharedModule } from '../shared/shared.module';
     CombosRoutingModule,
     RouterModule,
     SharedModule
+  ],
+  providers: [
+    CurrencyPipe
   ]
 })
 export class CombosModule { }

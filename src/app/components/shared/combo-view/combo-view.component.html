@@ -8,6 +8,6 @@
   </h1>
   <div class="bottom-section">
     <p class="subtitle secondary-font">{{subtitle}}</p>
-    <input class="number-input" type="number" min="0" [defaultValue]="0">
+    <input class="number-input" type="number" [min]="minValue" [max]="maxValue" step="1" [defaultValue]="value" [disabled]="countDisabled" (change)="onCountChange($event)">
   </div>
 </article>

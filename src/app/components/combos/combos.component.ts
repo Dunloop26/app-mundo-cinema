@@ -1,8 +1,10 @@
+import {CurrencyPipe} from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Combo } from 'src/app/interfaces/combo';
 import { ComboInfo } from 'src/app/interfaces/combo-info';
 import { OrderStorageService } from 'src/app/services/order-storage.service';
+import {ComboViewComponent} from '../shared/combo-view/combo-view.component';
 
 @Component({
   selector: 'app-combos',
@@ -10,9 +12,12 @@ import { OrderStorageService } from 'src/app/services/order-storage.service';
   styleUrls: ['./combos.component.scss'],
 })
 export class CombosComponent implements OnInit {
-  constructor(private router: Router, private order: OrderStorageService) {}
+  constructor(private router: Router, private order: OrderStorageService, private currency: CurrencyPipe) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.ticketCount = this.order.ticketCount;
+    this.ticketValue = this.order.ticket.value * this.ticketCount;
+  }
 
   combos: Array<Combo> = [
     { id: "CC-01", name: 'Combo alitas', value: 12500 },
@@ -20,11 +25,12 @@ export class CombosComponent implements OnInit {
     { id: "CC-03", name: 'Combo hamburguesa', value: 18500 },
   ];
 
-  selectedComboIdx = -1;
+  ticketValue = 0;
+  ticketCount = 1;
 
   subtotal: number = 0;
   subtotalCombo: number = 0;
-  count: number = 1;
+  count: number = 0;
 
   canContinue = false;
 
@@ -32,21 +38,13 @@ export class CombosComponent implements OnInit {
     this.subtotal = count * value;
   }
 
-  onInputChange(inputRef: HTMLInputElement) {
-    this.count = parseInt(inputRef.value);
-    if (this.selectedComboIdx != -1) {
-      const comboValue = this.combos[this.selectedComboIdx].value;
-      this.updateCount(this.count, comboValue);
-    } else {
-      this.subtotal = 0;
-      this.count = 1;
-      inputRef.value = '1';
-    }
-    this.evaluateContinue();
+  transformToCurrency(value: number | string) : string {
+    return this.currency.transform(value, undefined, 'symbol', '0.2-2') || value.toString();
   }
 
-  evaluateContinue() {
-    this.canContinue = this.selectedComboIdx != -1;
+  comboViewCountChange(data : {sender: ComboViewComponent, delta: number}) : void {
+    this.count += data.delta
+    console.log(this.ticketCount, this.count, data.delta)
   }
 
   onContinue(): void {
