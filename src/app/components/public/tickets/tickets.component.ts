@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { OrderStorageService } from 'src/app/services/order-storage.service';
 import { Ticket } from 'src/app/interfaces/ticket';
 import { CurrencyPipe } from '@angular/common';
+import { TicketsService } from 'src/app/services/tickets.service';
 
 @Component({
   selector: 'app-tickets',
@@ -11,15 +12,26 @@ import { CurrencyPipe } from '@angular/common';
   styleUrls: ['./tickets.component.scss'],
 })
 export class TicketsComponent implements OnInit {
-  constructor(private router: Router, private order: OrderStorageService, public currency: CurrencyPipe) {}
+  constructor(private router: Router, private order: OrderStorageService, public currency: CurrencyPipe, private ticketSrv: TicketsService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.ticketSrv.getAll().subscribe(res => this.parseData(res.response.data))
+  }
 
-  tickets: Array<Ticket> = [
-    { title: 'Diurno', value: 45000 },
-    { title: 'Tarde', value: 50000 },
-    { title: 'Nocturno', value: 35000 },
-  ];
+  parseData(data : any) {
+    this.tickets = [];
+    for(let row of data) {
+      this.tickets.push(
+        {
+          code: row[0],
+          title: row[1],
+          value: row[2],
+        }
+      )
+    }
+  }
+
+  tickets: Array<Ticket> = [];
 
   selectedTicketIdx = -1;
 

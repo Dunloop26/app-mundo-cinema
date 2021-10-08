@@ -1,5 +1,5 @@
 export interface Ticket {
-  //code: string;
+  code: string;
   title: string;
   value: number;
 }
