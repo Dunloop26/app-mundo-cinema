@@ -3,7 +3,7 @@
   </app-page-description-header>
   <div class="ticket-container">
     <app-ticket-view *ngFor="let ticket of tickets; index as i" [title]="ticket.title"
-      [subtitle]="currency.transform(ticket.value, undefined, 'symbol', '4.2-2') || ''" (click)="onTicketClick(i)" [select]="selectedTicketIdx == i">
+      [subtitle]="currency.transform(ticket.value, undefined, 'symbol', '0.2-2') || ''" (click)="onTicketClick(i)" [select]="selectedTicketIdx == i">
     </app-ticket-view>
   </div>
   <section class="bottom-section">
@@ -18,7 +18,7 @@
       <h4 class="label">
         Subtotal
       </h4>
-      <input class="number-input" type="number" disabled name="" id="" [value]="currency.transform(subtotal.toString(), undefined, 'symbol', '4.2-2')">
+      <input class="number-input" disabled name="" id="" [value]="this.currency.transform(this.subtotal, undefined, 'symbol', '0.2-2')">
     </section>
   </section>
   <div class="button-container">
