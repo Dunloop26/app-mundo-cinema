@@ -27,6 +27,14 @@ const routes: Routes = [
     canActivate: [HasTicketGuard],
   },
   {
+    path: 'checkout',
+    loadChildren: () =>
+      import('./components/public/checkout/checkout.module').then(
+        (m) => m.CheckoutModule
+      ),
+    canActivate: [HasTicketGuard]
+  },
+  {
     path: '**',
     loadChildren: () =>
       import('./components/public/page-not-found/page-not-found.module').then(

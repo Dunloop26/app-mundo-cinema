@@ -23,6 +23,7 @@ export class HasTicketGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
+      return true;
     if (!this.order.hasTicket()) {
       return this.router.parseUrl('home');
     } else {

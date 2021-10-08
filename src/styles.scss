@@ -68,6 +68,7 @@ app-root {
     border-radius: $button-radius;
     background-color: $accent-color-1;
     box-shadow: none;
+    text-transform: none;
 
     &:hover {
       background-color: lighten($accent-color-1, 10%);
@@ -136,4 +137,8 @@ app-root {
   background: #E5E5E5;
   border-radius: 15px;
   border: 3px solid #C4C4C4;
+}
+
+.italic {
+  font-style: italic;
 }
