@@ -73,15 +73,22 @@ export class CombosComponent implements OnInit {
         if (comboInfo != undefined) {
           // Remuevo el combo via el index
           const index = this.comboList.indexOf(comboInfo);
+          console.log(this.comboList)
           this.comboList.splice(index, 1);
+          console.log(this.comboList, "AFTER")
         }
       } else {
         // Si la cantidad de elementos es mayor a 0
         // Lo añado a la lista
-        this.comboList.push({
-          id: comboView.id,
-          quantity: comboView.value,
-        });
+        let combo = this.comboList.find(comboInfo => comboInfo.id == comboView.id);
+        if (combo != undefined) {
+          combo.quantity = comboView.value;
+        } else {
+          this.comboList.push({
+            id: comboView.id,
+            quantity: comboView.value,
+          });
+        }
       }
     }
     this.updateSubtotalCombo();
@@ -94,6 +101,7 @@ export class CombosComponent implements OnInit {
 
   updateSubtotalCombo() {
     this.subtotalCombo = 0;
+    console.log('Combo list', this.comboList);
     for (let comboInfo of this.comboList) {
       const id = comboInfo.id;
       const currentCombo: Combo | undefined = this.getComboById(id);
