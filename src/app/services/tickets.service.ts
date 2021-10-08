@@ -12,7 +12,7 @@ export class TicketsService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Ticket|any> {
-    return this.http.get<Ticket|any>('/api/tickets').pipe(
+    return this.http.get<Ticket|any>('api/tickets').pipe(
       filter(res => res && !!res),
       tap((res) => {
         console.log(res);

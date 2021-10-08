@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Combo } from 'src/app/interfaces/combo';
 import { ComboInfo } from 'src/app/interfaces/combo-info';
 import { OrderStorageService } from 'src/app/services/order-storage.service';
+import { ProductsService } from 'src/app/services/products.service';
 import { ComboViewComponent } from '../shared/combo-view/combo-view.component';
 
 @Component({
@@ -15,19 +16,37 @@ export class CombosComponent implements OnInit {
   constructor(
     private router: Router,
     private order: OrderStorageService,
-    private currency: CurrencyPipe
+    private currency: CurrencyPipe,
+    private productSrv: ProductsService
   ) {}
 
   ngOnInit(): void {
     this.ticketCount = this.order.ticketCount;
     this.ticketValue = (this.order.ticket?.value ?? 0) * this.ticketCount;
+    if (this.order.ticket == undefined) {
+      this.router.navigateByUrl('tickets');
+    } else {
+      this.productSrv.getAll(this.order.ticket.code).subscribe((res) => {
+        this.combosAvailable = res.response.message;
+        this.parseData(res.response.data);
+      });
+    }
   }
 
-  combos: Array<Combo> = [
-    { id: 'CC-01', name: 'Combo alitas', value: 12500 },
-    { id: 'CC-02', name: 'Combo papas con gaseosa', value: 13450 },
-    { id: 'CC-03', name: 'Combo hamburguesa', value: 18500 },
-  ];
+  parseData(data: any): void {
+    this.combos = [];
+    for(let row of data) {
+      this.combos.push(
+        {
+          id: row[0],
+          name: row[1],
+          value: row[2]
+        }
+      )
+    }
+  }
+
+  combos: Array<Combo> = [];
 
   // Ticket values
   ticketValue = 0;
@@ -63,7 +82,6 @@ export class CombosComponent implements OnInit {
 
     // Si existe el comboView
     if (comboView.id != undefined) {
-
       // Si no hay cantidad definida del combo
       if (quantity <= 0) {
         // Encuentro el combo
@@ -74,14 +92,16 @@ export class CombosComponent implements OnInit {
         if (comboInfo != undefined) {
           // Remuevo el combo via el index
           const index = this.comboList.indexOf(comboInfo);
-          console.log(this.comboList)
+          console.log(this.comboList);
           this.comboList.splice(index, 1);
-          console.log(this.comboList, "AFTER")
+          console.log(this.comboList, 'AFTER');
         }
       } else {
         // Si la cantidad de elementos es mayor a 0
         // Lo añado a la lista
-        let combo = this.comboList.find(comboInfo => comboInfo.id == comboView.id);
+        let combo = this.comboList.find(
+          (comboInfo) => comboInfo.id == comboView.id
+        );
         if (combo != undefined) {
           combo.quantity = comboView.value;
         } else {
@@ -120,13 +140,13 @@ export class CombosComponent implements OnInit {
   }
 
   private getSelectedCombos(): Array<ComboInfo> {
-    let combos : Array<ComboInfo> = []
+    let combos: Array<ComboInfo> = [];
     for (let comboInfo of this.comboList) {
       const combo = this.getComboById(comboInfo.id);
       if (combo == undefined) continue;
       combos.push({
         combo,
-        count: comboInfo.quantity
+        count: comboInfo.quantity,
       });
     }
     return combos;
