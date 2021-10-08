@@ -1,4 +1,4 @@
-@import 'src/styles.scss';
+@import "src/styles.scss";
 
 .ticket-container {
   padding: 4rem 2rem;
@@ -7,7 +7,6 @@
   justify-content: space-between;
   overflow-x: auto;
   margin-bottom: 3rem;
-
 }
 .bottom-section {
   display: flex;
@@ -20,6 +19,28 @@
     margin: 0;
   }
 }
+
+.msg-no-combo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  .bx {
+    color: #C4C4C4;
+  }
+
+  .subtitle {
+    color: #8D8D8D;
+  }
+
+}
+
+.combos-not-available {
+  --size: 7rem;
+  margin: var(--size) 0;
+}
+
 .count-section {
   display: flex;
   flex-direction: row;
@@ -40,13 +61,17 @@
     text-align: center;
     border: none;
 
-    &:focus, &:active, &:hover, &:after {
+    &:focus,
+    &:active,
+    &:hover,
+    &:after {
       border: none;
     }
   }
 }
 
-.subtotal-section, .subtotal-combo-section {
+.subtotal-section,
+.subtotal-combo-section {
   display: flex;
   gap: 2rem;
   align-items: center;
@@ -55,7 +80,7 @@
   .label {
     font-size: 1.5rem;
     font-family: $secondary-font;
-    margin: 0;;
+    margin: 0;
   }
 
   .number-input {
@@ -69,7 +94,10 @@
     text-align: center;
     border: none;
 
-    &:focus, &:active, &:hover, &:after {
+    &:focus,
+    &:active,
+    &:hover,
+    &:after {
       border: none;
     }
   }

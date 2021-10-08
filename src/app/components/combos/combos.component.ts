@@ -39,6 +39,7 @@ export class CombosComponent implements OnInit {
   count: number = 0;
 
   comboList: Array<{ id: string; quantity: number }> = [];
+  combosAvailable = false;
 
   updateCount(count: number, value: number) {
     this.subtotal = count * value;
