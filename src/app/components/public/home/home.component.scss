@@ -1,7 +1,15 @@
 main {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  height: 36em;
+
+  .modal-section {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 40rem;
+  }
+
   .modal-style {
     max-width: 32.25rem;
     h4 {
@@ -10,5 +18,41 @@ main {
     p {
       font-size: 1.125rem;
     }
+  }
+
+  .features-section {
+    display: flex;
+    width: 100%;
+    align-items:center;
+    flex-direction: column;
+    $padding: 6rem;
+    padding-top: $padding;
+    padding-bottom: $padding + ($padding / 2);
+
+    .heading {
+      margin-bottom: 1.25em;
+    }
+
+    .feature-group {
+      display:flex;
+      gap: 2rem;
+      justify-content: space-between;
+      width: 100%;
+      align-items: stretch;
+
+      & > * {
+        width: 22.5rem;
+      }
+    }
+  }
+
+  .image-container {
+    position: absolute;
+    height: 40rem;
+    width: 100%;
+    z-index: -1024;
+    top: 7.5rem;
+    left: 0;
+    background-image: url('https://pixabay.com/get/g008e555c55c76f2e47fedf611c2427e16df3b55000d296c94374a98859cd14e3d4610d5d3f99719b505efcfc7d3b0c37aa00e0d52118f060db58602e7a7ff1b0_1920.jpg');
   }
 }

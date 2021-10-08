@@ -1,7 +1,24 @@
 <main class="container">
-  <section class="modal-style">
-    <h3 class="bottom-margin-only">Más que un cinema</h3>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro totam ab incidunt commodi necessitatibus maxime eos, dicta rem facilis? Autem nostrum placeat, dolore itaque iste magni. Recusandae unde eius nihil?</p>
-    <button routerLink="/tickets" class="btn accent-color-1-bg">Comprar entradas</button>
+  <section class="modal-section">
+    <article class="modal-style">
+      <h3 class="bottom-margin-only">Más que un cinema</h3>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro totam ab
+        incidunt commodi necessitatibus maxime eos, dicta rem facilis? Autem
+        nostrum placeat, dolore itaque iste magni. Recusandae unde eius nihil?
+      </p>
+      <button routerLink="/tickets" class="btn accent-color-1-bg">
+        Comprar entradas
+      </button>
+    </article>
+  </section>
+  <div class="image-container"></div>
+  <section class="features-section">
+    <h2 class="heading">Un cine a tu alcance</h2>
+    <div class="feature-group">
+      <app-feature-card *ngFor="let feature of features" [title]="feature.title || ''" [content]="feature.content || ''">
+        <i class="bx accent-color-5-text" [ngClass]="feature.other?.bxIcon || ''" style="font-size: 95px;"></i>
+      </app-feature-card>
+    </div>
   </section>
 </main>

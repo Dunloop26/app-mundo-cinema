@@ -6,6 +6,7 @@ import { FooterComponent } from './footer/footer.component';
 import { PageDescriptionHeaderComponent } from './page-description-header/page-description-header.component';
 import { TicketViewComponent } from './ticket-view/ticket-view.component';
 import { ComboViewComponent } from './combo-view/combo-view.component';
+import { FeatureCardComponent } from './feature-card/feature-card.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { ComboViewComponent } from './combo-view/combo-view.component';
     FooterComponent,
     PageDescriptionHeaderComponent,
     TicketViewComponent,
-    ComboViewComponent
+    ComboViewComponent,
+    FeatureCardComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import { ComboViewComponent } from './combo-view/combo-view.component';
     FooterComponent,
     PageDescriptionHeaderComponent,
     TicketViewComponent,
-    ComboViewComponent
+    ComboViewComponent,
+    FeatureCardComponent
   ]
 })
 export class SharedModule { }

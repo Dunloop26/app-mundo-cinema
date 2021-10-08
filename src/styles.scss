@@ -10,6 +10,7 @@ $accent-color-1: #646CB0;
 $accent-color-2: #ABABAB;
 $accent-color-3: #72D045;
 $accent-color-4: #D2D2D2;
+$accent-color-5: #1E9ACF;
 $button-radius: 0.3125rem;
 $modal-radius: 0.9375rem;
 $modal-padding: 2.1875rem;
@@ -21,6 +22,10 @@ $shadow-profile: 0 2px 8px rgba(0,0,0,0.25);
 
 .secondary-font {
   font-family: $secondary-font;
+}
+
+body {
+  background-color: white;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -41,6 +46,10 @@ p, a, div {
 
 .accent-color-2-text {
   color: $accent-color-2;
+}
+
+.accent-color-5-text {
+  color: $accent-color-5;
 }
 
 .modal-style {
