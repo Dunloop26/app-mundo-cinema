@@ -13,6 +13,7 @@ export class CheckoutService {
   currentInvoiceId : string | undefined;
 
   sendInvoiceData(data: Invoice): Observable<any> {
+    console.log(data)
     return this.http.post('api/invoicing', data).pipe(
       filter((res) => res && !!res),
       tap((res) => console.log(res)),

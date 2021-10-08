@@ -139,9 +139,12 @@ export class CombosComponent implements OnInit {
 
   onContinue(): void {
     this.order.saveCombosInfo(this.getSelectedCombos());
-    if (this.order.ticket != undefined){
+    this.checkoutSrv.clearInvoiceId()
+    const currentTicket = this.order.ticket;
+    const amount = this.order.ticketCount;
+    if (currentTicket != undefined){
       this.checkoutSrv.sendInvoiceData({
-        ticket: this.order.ticket,
+        ticket: {code: currentTicket?.code, amount},
         products: this.parseToProducts(this.order.combos)
       }).subscribe(res => {
         this.checkoutSrv.currentInvoiceId = res.response.invoice
@@ -155,13 +158,11 @@ export class CombosComponent implements OnInit {
     for(let comboInfo of combos) {
       let combo = comboInfo.combo
       let product : Product = {
-        name: combo.id,
-        quantity: comboInfo.count,
-        value: combo.value,
+        code: combo.id,
+        amount: comboInfo.count,
       }
       products.push(product);
     }
-
     return products;
   }
 
