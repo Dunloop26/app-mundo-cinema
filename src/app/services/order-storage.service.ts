@@ -15,7 +15,6 @@ export class OrderStorageService {
   combos!: Array<ComboInfo>;
 
   hasTicket() {
-    console.log(this.ticket != undefined && this.ticketCount != 0)
     return this.ticket != undefined && this.ticketCount != 0;
   }
 

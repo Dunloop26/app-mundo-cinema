@@ -121,3 +121,19 @@ app-root {
 .collapsed {
   visibility: collapse;
 }
+
+::-webkit-scrollbar {
+  width: 15px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #C4C4C4;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E5E5E5;
+  border-radius: 15px;
+  border: 3px solid #C4C4C4;
+}

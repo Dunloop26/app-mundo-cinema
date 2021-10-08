@@ -59,7 +59,7 @@ export class CombosComponent implements OnInit {
 
     const comboView = data.sender;
     const quantity = comboView.value;
-    
+
     // Si existe el comboView
     if (comboView.id != undefined) {
 
@@ -101,6 +101,8 @@ export class CombosComponent implements OnInit {
         this.subtotalCombo += currentCombo.value * comboInfo.quantity;
       }
     }
+
+    console.log(this.subtotalCombo);
   }
 
   onContinue(): void {
