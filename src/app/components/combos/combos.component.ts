@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Combo } from 'src/app/interfaces/combo';
 import { ComboInfo } from 'src/app/interfaces/combo-info';
+import { Product } from 'src/app/interfaces/product';
+import { CheckoutService } from 'src/app/services/checkout.service';
 import { OrderStorageService } from 'src/app/services/order-storage.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { ComboViewComponent } from '../shared/combo-view/combo-view.component';
@@ -17,7 +19,8 @@ export class CombosComponent implements OnInit {
     private router: Router,
     private order: OrderStorageService,
     private currency: CurrencyPipe,
-    private productSrv: ProductsService
+    private productSrv: ProductsService,
+    private checkoutSrv: CheckoutService,
   ) {}
 
   ngOnInit(): void {
@@ -136,7 +139,30 @@ export class CombosComponent implements OnInit {
 
   onContinue(): void {
     this.order.saveCombosInfo(this.getSelectedCombos());
-    this.router.navigateByUrl('checkout');
+    if (this.order.ticket != undefined){
+      this.checkoutSrv.sendInvoiceData({
+        ticket: this.order.ticket,
+        products: this.parseToProducts(this.order.combos)
+      }).subscribe(res => {
+        this.checkoutSrv.currentInvoiceId = res.response.invoice
+        this.router.navigateByUrl('checkout');
+      });
+    }
+  }
+
+  parseToProducts(combos: Array<ComboInfo>) : Array<Product> {
+    const products : Array<Product>= []
+    for(let comboInfo of combos) {
+      let combo = comboInfo.combo
+      let product : Product = {
+        name: combo.id,
+        quantity: comboInfo.count,
+        value: combo.value,
+      }
+      products.push(product);
+    }
+
+    return products;
   }
 
   private getSelectedCombos(): Array<ComboInfo> {
