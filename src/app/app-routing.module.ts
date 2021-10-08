@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HasTicketGuard } from './guards/has-ticket.guard';
 
 const routes: Routes = [
   {
@@ -19,7 +20,12 @@ const routes: Routes = [
         (m) => m.TicketsModule
       ),
   },
-  { path: 'combos', loadChildren: () => import('./components/combos/combos.module').then(m => m.CombosModule) },
+  {
+    path: 'combos',
+    loadChildren: () =>
+      import('./components/combos/combos.module').then((m) => m.CombosModule),
+    canActivate: [HasTicketGuard],
+  },
   {
     path: '**',
     loadChildren: () =>

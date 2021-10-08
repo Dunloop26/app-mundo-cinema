@@ -16,7 +16,7 @@ export class CombosComponent implements OnInit {
 
   ngOnInit(): void {
     this.ticketCount = this.order.ticketCount;
-    this.ticketValue = this.order.ticket.value * this.ticketCount;
+    this.ticketValue = (this.order.ticket?.value ?? 0) * this.ticketCount;
   }
 
   combos: Array<Combo> = [
