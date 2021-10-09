@@ -27,6 +27,17 @@ export class CheckoutComponent implements OnInit {
   buildProductList() : void{
     this.products = [];
     this.invoiceTotal = 0;
+
+    const ticket = this.orderSrv.ticket;
+    const count = this.orderSrv.ticketCount;
+    const ticketProduct = {
+        name: `Ticket ${ticket?.title}` ?? '',
+        count,
+        total: (ticket?.value ?? 0) * count,
+      }
+    this.products.push(ticketProduct)
+    this.invoiceTotal += ticketProduct.total;
+
     if (this.orderSrv.hasCombos()) {
       const combos = this.orderSrv.combos;
       for (let comboInfo of combos) {
@@ -38,16 +49,6 @@ export class CheckoutComponent implements OnInit {
         this.invoiceTotal += product.total;
         this.products.push(product);
       }
-
-      const ticket = this.orderSrv.ticket;
-      const count = this.orderSrv.ticketCount;
-      const ticketProduct = {
-          name: `Ticket ${ticket?.title}` ?? '',
-          count,
-          total: (ticket?.value ?? 0) * count,
-        }
-      this.products.push(ticketProduct)
-      this.invoiceTotal += ticketProduct.total;
     }
   }
 
