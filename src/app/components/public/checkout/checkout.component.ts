@@ -42,7 +42,7 @@ export class CheckoutComponent implements OnInit {
       const ticket = this.orderSrv.ticket;
       const count = this.orderSrv.ticketCount;
       const ticketProduct = {
-          name: ticket?.title ?? '',
+          name: `Ticket ${ticket?.title}` ?? '',
           count,
           total: (ticket?.value ?? 0) * count,
         }
