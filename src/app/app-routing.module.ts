@@ -32,7 +32,14 @@ const routes: Routes = [
       import('./components/public/checkout/checkout.module').then(
         (m) => m.CheckoutModule
       ),
-    canActivate: [HasTicketGuard]
+    canActivate: [HasTicketGuard],
+  },
+  {
+    path: 'invoice/:id',
+    loadChildren: () =>
+      import(
+        './components/public/checkout-success/checkout-success.module'
+      ).then((m) => m.CheckoutSuccessModule),
   },
   {
     path: '**',
