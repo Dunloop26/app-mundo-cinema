@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
       other: { bxIcon: 'bx-glasses-alt' },
     },
     {
-      title: 'Cuando quieras',
+      title: 'A la hora que tú quieras',
       content: 'Nuestros horarios te permiten disfrutar de las peliculas cuando tu quieras ;)',
       other: { bxIcon: 'bx-time-five' },
     },
