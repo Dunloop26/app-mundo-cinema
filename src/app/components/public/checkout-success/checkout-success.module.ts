@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CheckoutSuccessRoutingModule } from './checkout-success-routing.module';
 import { CheckoutSuccessComponent } from './checkout-success.component';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     CheckoutSuccessRoutingModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ]
 })
 export class CheckoutSuccessModule { }

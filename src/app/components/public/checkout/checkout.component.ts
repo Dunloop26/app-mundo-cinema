@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { InvoiceProduct } from 'src/app/interfaces/invoice-product';
-import { Product } from 'src/app/interfaces/product';
 import { CheckoutService } from 'src/app/services/checkout.service';
 import { OrderStorageService } from 'src/app/services/order-storage.service';
 
@@ -14,7 +13,7 @@ export class CheckoutComponent implements OnInit {
   constructor(
     private checkoutSrv: CheckoutService,
     private orderSrv: OrderStorageService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -60,6 +59,10 @@ export class CheckoutComponent implements OnInit {
     const pad = '00000000';
     const result = (pad + id).slice(-pad.length);
     return result;
+  }
+
+  onCancel(): void {
+    // Mostrar modal de cancelación
   }
 
   onContinue(): void {

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Combo } from 'src/app/interfaces/combo';
 import { ComboInfo } from 'src/app/interfaces/combo-info';
 import { Product } from 'src/app/interfaces/product';
+import { ProductResponse } from 'src/app/interfaces/product-response';
 import { CheckoutService } from 'src/app/services/checkout.service';
 import { OrderStorageService } from 'src/app/services/order-storage.service';
 import { ProductsService } from 'src/app/services/products.service';
@@ -30,20 +31,21 @@ export class CombosComponent implements OnInit {
       this.router.navigateByUrl('tickets');
     } else {
       this.productSrv.getAll(this.order.ticket.code).subscribe((res) => {
-        this.combosAvailable = res.response.message;
-        this.parseData(res.response.data);
+        this.combosAvailable = res.response.available;
+        if (this.combosAvailable)
+          this.parseData(res.response.data);
       });
     }
   }
 
-  parseData(data: any): void {
+  parseData(data: Array<ProductResponse>): void {
     this.combos = [];
-    for(let row of data) {
+    for(let response of data) {
       this.combos.push(
         {
-          id: row[0],
-          name: row[1],
-          value: row[2]
+          id: response.code,
+          name: response.name,
+          value: response.price
         }
       )
     }
@@ -148,7 +150,7 @@ export class CombosComponent implements OnInit {
         products: this.parseToProducts(this.order.combos)
       }).subscribe(res => {
         this.checkoutSrv.currentInvoiceId = res.response.invoice
-        this.router.navigateByUrl('checkout');
+        this.router.navigate(['checkout']);
       });
     }
   }

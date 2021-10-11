@@ -17,4 +17,9 @@ export class CheckoutSuccessComponent implements OnInit {
 
   invoiceId : string = '';
 
+  zeroFill(id: string) {
+    const pad = '00000000';
+    const result = (pad + id).slice(-pad.length);
+    return result;
+  }
 }

@@ -5,7 +5,7 @@ import { OrderStorageService } from 'src/app/services/order-storage.service';
 import { Ticket } from 'src/app/interfaces/ticket';
 import { CurrencyPipe } from '@angular/common';
 import { TicketsService } from 'src/app/services/tickets.service';
-
+import { ProductResponse } from 'src/app/interfaces/product-response';
 @Component({
   selector: 'app-tickets',
   templateUrl: './tickets.component.html',
@@ -18,14 +18,15 @@ export class TicketsComponent implements OnInit {
     this.ticketSrv.getAll().subscribe(res => this.parseData(res.response.data))
   }
 
-  parseData(data : any) {
+  parseData(data : Array<ProductResponse>) {
     this.tickets = [];
-    for(let row of data) {
+    console.log(data, "DATA")
+    for(let ticketInfo of data) {
       this.tickets.push(
         {
-          code: row[0],
-          title: row[1],
-          value: row[2],
+          code: ticketInfo.code,
+          title: ticketInfo.name,
+          value: ticketInfo.price,
         }
       )
     }
