@@ -32,9 +32,13 @@ export class InvoiceShowComponent implements OnInit {
       total: invoiceData.tickets_value,
     })
     this.invoiceTotal = invoiceData.total_value;
+    console.log(invoiceData)
+    this.date = Date.parse(invoiceData.date_time);
+    console.log(this.date);
   }
 
   id: string = '';
   products: Array<InvoiceProduct> = [];
   invoiceTotal: number = 0;
+  date: number = 0;
 }

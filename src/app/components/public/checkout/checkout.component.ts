@@ -17,13 +17,12 @@ export class CheckoutComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.checkoutSrv.currentInvoiceId);
     this.id = this.checkoutSrv.currentInvoiceId?.toString() ?? '';
     this.buildProductList();
   }
 
   id: string = '';
-  date: Date = new Date();
+  date: number = 0;
   products: Array<InvoiceProduct> = [];
   invoiceTotal = 0;
 
@@ -40,6 +39,8 @@ export class CheckoutComponent implements OnInit {
     };
     this.products.push(ticketProduct);
     this.invoiceTotal += ticketProduct.total;
+
+    this.date = this.orderSrv.date;
 
     if (this.orderSrv.hasCombos()) {
       const combos = this.orderSrv.combos;

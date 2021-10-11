@@ -1,7 +1,7 @@
 <main class="container">
   <app-page-description-header title="Tu factura" subtitle="A un solo paso de disfrutar de MundoCinema">
   </app-page-description-header>
-  <app-invoice-details [id]="id" [invoiceTotal]="invoiceTotal" [products]="products"></app-invoice-details>
+  <app-invoice-details [id]="id" [invoiceTotal]="invoiceTotal" [products]="products" [date]="date"></app-invoice-details>
   <section class="btn-group">
     <button class="btn red darken-3">Cancelar</button>
     <button class="btn" (click)="onContinue()">Confirmar</button>

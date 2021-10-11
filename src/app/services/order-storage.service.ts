@@ -10,6 +10,7 @@ export class OrderStorageService {
 
   constructor() { }
 
+  date: number = 0;
   ticket!: Ticket | undefined;
   ticketCount: number = 0;
   combos!: Array<ComboInfo>;
@@ -35,5 +36,9 @@ export class OrderStorageService {
 
   saveCombosInfo(combos: Array<ComboInfo>) {
     this.combos = combos;
+  }
+
+  saveDate(date: number) {
+    this.date = date;
   }
 }

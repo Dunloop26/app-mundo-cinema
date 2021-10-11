@@ -41,6 +41,7 @@ const routes: Routes = [
       import(
         './components/public/checkout-success/checkout-success.module'
       ).then((m) => m.CheckoutSuccessModule),
+    canActivate: [HasTicketGuard]
   },
   {
     path: 'invoice/details/:id',

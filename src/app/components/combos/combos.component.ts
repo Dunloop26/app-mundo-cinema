@@ -141,6 +141,7 @@ export class CombosComponent implements OnInit {
 
   onContinue(): void {
     this.order.saveCombosInfo(this.getSelectedCombos());
+    this.order.saveDate(Date.now());
     this.checkoutSrv.clearInvoiceId()
     const currentTicket = this.order.ticket;
     const amount = this.order.ticketCount;

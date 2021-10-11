@@ -16,6 +16,7 @@ export class InvoiceDetailsComponent implements OnInit {
   @Input() id: string = '';
   @Input() products: Array<InvoiceProduct> = [];
   @Input() invoiceTotal: number = 0;
+  @Input() date: number = 0;
 
   zeroFill(value: string){
     const pad = '00000000';
