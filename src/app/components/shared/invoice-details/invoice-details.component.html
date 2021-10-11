@@ -1,0 +1,32 @@
+<section class="invoice-section modal-style">
+    <header>
+      <div class="label-group">
+        <span class="label">ID:</span>
+        <span class="code italic"># MC<span class="code">{{zeroFill(id)}}</span></span>
+      </div>
+      <div class="label-group">
+        <span class="label">Fecha:</span>
+        <span class="code">1985 / 01 / 01 - 1:32 p.m.</span>
+      </div>
+    </header>
+    <section class="table-section">
+      <header>
+        <span class="label black-text">Productos</span>
+      </header>
+      <span class="label">Nombre</span>
+      <span class="label">Cantidad</span>
+      <span class="label">Precio</span>
+      <div class="divider"></div>
+      <div class="product-item" *ngFor="let product of products">
+        <span class="name">{{product.name}}</span>
+        <span class="quantity">x{{product.count}}</span>
+        <span class="value">{{product.total | currency}}</span>
+      </div>
+    </section>
+    <div class="footer-wrapper">
+      <footer>
+        <span class="label">Total</span>
+        <span class="code">{{invoiceTotal | currency}}</span>
+      </footer>
+    </div>
+  </section>
