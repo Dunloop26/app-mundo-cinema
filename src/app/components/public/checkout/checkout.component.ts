@@ -55,12 +55,6 @@ export class CheckoutComponent implements OnInit {
     }
   }
 
-  formatId(id: string) {
-    const pad = '00000000';
-    const result = (pad + id).slice(-pad.length);
-    return result;
-  }
-
   onCancel(): void {
     // Mostrar modal de cancelación
   }

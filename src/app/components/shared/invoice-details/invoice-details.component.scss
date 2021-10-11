@@ -1,3 +1,5 @@
+@import 'src/styles.scss';
+
 .invoice-section {
   margin-top: 3rem;
   margin-bottom: 5rem;
@@ -12,13 +14,13 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     width: 25rem;
-    justify-items: end;
-    align-content: end;
+    justify-items: flex-end;
+    align-content: flex-end;
   }
 
   .footer-wrapper {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
   }
 
   .label, .code {

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { InvoiceProduct } from 'src/app/interfaces/invoice-product';
 
 @Component({
@@ -9,7 +10,8 @@ import { InvoiceProduct } from 'src/app/interfaces/invoice-product';
 export class InvoiceDetailsComponent implements OnInit {
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   @Input() id: string = '';
   @Input() products: Array<InvoiceProduct> = [];
