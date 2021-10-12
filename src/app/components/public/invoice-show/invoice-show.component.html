@@ -1,6 +1,12 @@
 <main class="container">
   <app-page-description-header title="Factura" subtitle=""></app-page-description-header>
   <div class="section"></div>
-  <app-invoice-details [id]="id" [products]="products" [invoiceTotal]="invoiceTotal" [date]="date"></app-invoice-details>
+  <app-invoice-details *ngIf="showData; else noDataBlock" [id]="id" [products]="products" [invoiceTotal]="invoiceTotal" [date]="date"></app-invoice-details>
+  <ng-template #noDataBlock>
+    <div class="no-data-block">
+      <h3>No encontrado</h3>
+      <p class="flow-text">No se ha encontrado el id de factura: {{id}}</p>
+    </div>
+  </ng-template>
   <div class="section"></div>
 </main>

@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { InvoiceProduct } from 'src/app/interfaces/invoice-product';
@@ -15,8 +16,23 @@ export class InvoiceShowComponent implements OnInit {
     private checkoutSrv: CheckoutService
   ) {}
 
+  showData : boolean = false;
+  id: string = '';
+  products: Array<InvoiceProduct> = [];
+  invoiceTotal: number = 0;
+  date: number = 0;
+
   ngOnInit(): void {
+    this.id = this.route.snapshot.params.id;
+    this.showData = !(this.route.snapshot.data.invoiceInfo instanceof HttpErrorResponse)
+    console.log(this.id, this.showData);
+    if (!this.showData) return;
+    console.log('SUCCEDED');
     const invoiceData = this.route.snapshot.data.invoiceInfo.response.data;
+    this.populateData(invoiceData);
+  }
+
+  populateData(invoiceData: any) {
     this.id = invoiceData.code;
     this.products = invoiceData.products.map((product : any) => {
       const output : InvoiceProduct = {
@@ -32,13 +48,6 @@ export class InvoiceShowComponent implements OnInit {
       total: invoiceData.tickets_value,
     })
     this.invoiceTotal = invoiceData.total_value;
-    console.log(invoiceData)
     this.date = Date.parse(invoiceData.date_time);
-    console.log(this.date);
   }
-
-  id: string = '';
-  products: Array<InvoiceProduct> = [];
-  invoiceTotal: number = 0;
-  date: number = 0;
 }

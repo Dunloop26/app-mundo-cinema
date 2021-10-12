@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { catchError, filter, tap } from 'rxjs/operators';
 import { Invoice } from '../interfaces/invoice';
 
@@ -17,7 +17,8 @@ export class CheckoutService {
       filter((res) => res && !!res),
       tap((res) => console.log(res)),
       catchError((err) => {
-        throw err;
+        console.error(err);
+        return of(err);
       })
     );
   }
@@ -30,7 +31,8 @@ export class CheckoutService {
     return this.http.get('api/invoicing/' + id).pipe(
       filter((res) => res && !!res),
       catchError((err) => {
-        throw err;
+        console.error(err);
+        return of(err);
       })
     );
   }
