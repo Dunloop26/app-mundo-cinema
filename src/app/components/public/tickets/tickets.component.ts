@@ -20,7 +20,6 @@ export class TicketsComponent implements OnInit {
 
   parseData(data : Array<ProductResponse>) {
     this.tickets = [];
-    console.log(data, "DATA")
     for(let ticketInfo of data) {
       this.tickets.push(
         {

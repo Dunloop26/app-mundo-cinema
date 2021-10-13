@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Combo } from 'src/app/interfaces/combo';
 import { ComboInfo } from 'src/app/interfaces/combo-info';
+import { Invoice } from 'src/app/interfaces/invoice';
 import { Product } from 'src/app/interfaces/product';
 import { ProductResponse } from 'src/app/interfaces/product-response';
 import { CheckoutService } from 'src/app/services/checkout.service';
@@ -32,22 +33,19 @@ export class CombosComponent implements OnInit {
     } else {
       this.productSrv.getAll(this.order.ticket.code).subscribe((res) => {
         this.combosAvailable = res.response.available;
-        if (this.combosAvailable)
-          this.parseData(res.response.data);
+        if (this.combosAvailable) this.parseData(res.response.data);
       });
     }
   }
 
   parseData(data: Array<ProductResponse>): void {
     this.combos = [];
-    for(let response of data) {
-      this.combos.push(
-        {
-          id: response.code,
-          name: response.name,
-          value: response.price
-        }
-      )
+    for (let response of data) {
+      this.combos.push({
+        id: response.code,
+        name: response.name,
+        value: response.price,
+      });
     }
   }
 
@@ -142,28 +140,30 @@ export class CombosComponent implements OnInit {
   onContinue(): void {
     this.order.saveCombosInfo(this.getSelectedCombos());
     this.order.saveDate(Date.now());
-    this.checkoutSrv.clearInvoiceId()
+    this.checkoutSrv.clearInvoiceId();
     const currentTicket = this.order.ticket;
     const amount = this.order.ticketCount;
-    if (currentTicket != undefined){
-      this.checkoutSrv.sendInvoiceData({
-        ticket: {code: currentTicket?.code, amount},
-        products: this.parseToProducts(this.order.combos)
-      }).subscribe(res => {
-        this.checkoutSrv.currentInvoiceId = res.response.invoice
+    if (currentTicket != undefined) {
+      const invoice: Invoice = {
+        ticket: { code: currentTicket?.code, amount },
+        products: this.parseToProducts(this.order.combos),
+      };
+      console.log("Registering invoice", invoice);
+      this.checkoutSrv.sendInvoiceData(invoice).subscribe((res) => {
+        this.checkoutSrv.currentInvoiceId = res.response.invoice;
         this.router.navigate(['checkout']);
       });
     }
   }
 
-  parseToProducts(combos: Array<ComboInfo>) : Array<Product> {
-    const products : Array<Product>= []
-    for(let comboInfo of combos) {
-      let combo = comboInfo.combo
-      let product : Product = {
+  parseToProducts(combos: Array<ComboInfo>): Array<Product> {
+    const products: Array<Product> = [];
+    for (let comboInfo of combos) {
+      let combo = comboInfo.combo;
+      let product: Product = {
         code: combo.id,
         amount: comboInfo.count,
-      }
+      };
       products.push(product);
     }
     return products;
