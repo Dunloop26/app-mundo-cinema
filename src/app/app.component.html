@@ -3,3 +3,6 @@
   <router-outlet></router-outlet>
 </div>
 <app-footer></app-footer>
+<ngx-smart-modal #modal identifier="modal" customClass="nsm-centered">
+  <app-modal-content [modal]="modal"></app-modal-content>
+</ngx-smart-modal>

@@ -3,7 +3,7 @@
   </app-page-description-header>
   <app-invoice-details [id]="id" [invoiceTotal]="invoiceTotal" [products]="products" [date]="date"></app-invoice-details>
   <section class="btn-group">
-    <button class="btn red darken-3">Cancelar</button>
+    <button class="btn red darken-3" (click)="onCancel()">Cancelar</button>
     <button class="btn" (click)="onContinue()">Confirmar</button>
   </section>
 </main>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 import { InvoiceProduct } from 'src/app/interfaces/invoice-product';
+import { ModalContent } from 'src/app/interfaces/modal-content';
 import { CheckoutService } from 'src/app/services/checkout.service';
 import { OrderStorageService } from 'src/app/services/order-storage.service';
 
@@ -14,6 +16,7 @@ export class CheckoutComponent implements OnInit {
     private checkoutSrv: CheckoutService,
     private orderSrv: OrderStorageService,
     private router: Router,
+    private modalSrv: NgxSmartModalService,
   ) {}
 
   ngOnInit(): void {
@@ -58,6 +61,19 @@ export class CheckoutComponent implements OnInit {
 
   onCancel(): void {
     // Mostrar modal de cancelación
+    this.modalSrv.open('modal')
+
+    const modalContent : any = {
+      title: "¿Estás seguro?",
+      content: "¿Deseas continuar con la cancelación de la factura?",
+      onAccept: () => {
+        this.router.navigateByUrl('home');
+      },
+      acceptLabel: 'Si, estoy seguro',
+      cancelLabel: 'No, llévame atrás',
+    }
+    this.modalSrv.setModalData(modalContent, 'modal');
+    this.modalSrv.open('modal');
   }
 
   onContinue(): void {

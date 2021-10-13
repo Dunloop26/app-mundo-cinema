@@ -8,6 +8,7 @@ import { TicketViewComponent } from './ticket-view/ticket-view.component';
 import { ComboViewComponent } from './combo-view/combo-view.component';
 import { FeatureCardComponent } from './feature-card/feature-card.component';
 import { InvoiceDetailsComponent } from './invoice-details/invoice-details.component';
+import { ModalContentComponent } from './modal-content/modal-content.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { InvoiceDetailsComponent } from './invoice-details/invoice-details.compo
     TicketViewComponent,
     ComboViewComponent,
     FeatureCardComponent,
-    InvoiceDetailsComponent
+    InvoiceDetailsComponent,
+    ModalContentComponent,
   ],
   imports: [
     CommonModule,
@@ -31,6 +33,7 @@ import { InvoiceDetailsComponent } from './invoice-details/invoice-details.compo
     ComboViewComponent,
     FeatureCardComponent,
     InvoiceDetailsComponent,
+    ModalContentComponent,
   ]
 })
 export class SharedModule { }
