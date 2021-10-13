@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-checkout-success',
@@ -13,9 +14,11 @@ export class CheckoutSuccessComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => this.invoiceId = params['id'])
+    this.invoiceURL = window.location.origin + `/invoice/details/${this.invoiceId}`
   }
 
   invoiceId : string = '';
+  invoiceURL : string = '';
 
   zeroFill(id: string) {
     const pad = '00000000';

@@ -5,6 +5,7 @@ import { CheckoutSuccessRoutingModule } from './checkout-success-routing.module'
 import { CheckoutSuccessComponent } from './checkout-success.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
+import { QRCodeModule } from 'angular2-qrcode';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SharedModule } from '../../shared/shared.module';
     CommonModule,
     CheckoutSuccessRoutingModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    QRCodeModule
   ]
 })
 export class CheckoutSuccessModule { }

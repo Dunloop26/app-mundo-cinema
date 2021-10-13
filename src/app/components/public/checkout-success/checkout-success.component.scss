@@ -1,5 +1,24 @@
-@import 'src/styles.scss';
+@import "src/styles.scss";
 
 .invoice-id {
   color: $accent-color-2;
+}
+
+.qr-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem;
+
+  qr-code {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      overflow: hidden;
+      border-radius: 0.625rem;
+    }
+  }
 }
